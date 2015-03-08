@@ -1,9 +1,16 @@
 <?php
 
 use Hypebook\Forms\RegistrationForm;
+use Hypebook\Registration\RegisterUserCommand;
+use Hypebook\Core\CommandBus;
 
-class RegistrationController extends \BaseController
+class RegistrationController extends BaseController
 {
+    use  CommandBus;
+
+    /**
+     * @var RegistrationForm
+     */
     private $registrationForm;
 
     /**
@@ -13,6 +20,7 @@ class RegistrationController extends \BaseController
     {
         $this->registrationForm = $registrationForm;
     }
+
     /**
      * Show a form to register a user.
      *
@@ -33,9 +41,11 @@ class RegistrationController extends \BaseController
     {
         $this->registrationForm->validate(Input::all());
 
-        $user = User::create(
-            Input::only('username', 'email', 'password')
-        );
+        extract(Input::only('username', 'email', 'password'));
+
+        $command = new RegisterUserCommand($username, $email, $password);
+
+        $user = $this->execute($command);
 
         Auth::login($user);
 
