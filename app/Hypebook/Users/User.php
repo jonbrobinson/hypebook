@@ -2,16 +2,18 @@
 
 namespace Hypebook\Users;
 
+use Hypebook\Registration\Events\UserRegistered;
 use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use Laracasts\Commander\Events\EventGenerator;
 use Eloquent, Hash;
 
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
-	use UserTrait, RemindableTrait;
+	use UserTrait, RemindableTrait, EventGenerator;
 
 	/**
 	 * Which fields may be mass assigned?
@@ -56,7 +58,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		$user = new static (compact('username', 'email', 'password'));
 
+		$user->raise(new UserRegistered($user));
+
 		return $user;
-		//raise an event
 	}
 }
