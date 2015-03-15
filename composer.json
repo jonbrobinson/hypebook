@@ -12,13 +12,13 @@
 		"way/generators": "~2.0",
 		"codeception/codeception": "~2.0",
 	  	"laracasts/testdummy": "~1.0",
-	    "laracasts/validation": "1.1.*"
+	    "laracasts/validation": "1.1.*",
+	  	"laracasts/flash": "1.0"
   	},
 	"autoload": {
 		"classmap": [
 			"app/commands",
 			"app/controllers",
-			"app/models",
 			"app/database/migrations",
 			"app/database/seeds",
 			"app/tests/TestCase.php"

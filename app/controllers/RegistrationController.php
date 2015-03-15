@@ -3,6 +3,7 @@
 use Hypebook\Forms\RegistrationForm;
 use Hypebook\Registration\RegisterUserCommand;
 use Hypebook\Core\CommandBus;
+use Laracasts\Flash\Flash;
 
 class RegistrationController extends BaseController
 {
@@ -48,6 +49,8 @@ class RegistrationController extends BaseController
         $user = $this->execute($command);
 
         Auth::login($user);
+
+        Flash::message("Glad to have you as a new Hypebook member!");
 
         return Redirect::home();
 
