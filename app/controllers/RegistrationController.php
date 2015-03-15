@@ -20,6 +20,8 @@ class RegistrationController extends BaseController
     function __construct(RegistrationForm $registrationForm)
     {
         $this->registrationForm = $registrationForm;
+
+        $this->beforeFilter('guest');
     }
 
     /**
@@ -50,7 +52,7 @@ class RegistrationController extends BaseController
 
         Auth::login($user);
 
-        Flash::message("Glad to have you as a new Hypebook member!");
+        Flash::overlay("Glad to have you as a new Hypebook member!");
 
         return Redirect::home();
 

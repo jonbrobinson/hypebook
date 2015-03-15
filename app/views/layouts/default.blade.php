@@ -19,6 +19,6 @@
     <script src="//code.jquery.com/jquery.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <scrip>$(#flash-overlay-modal').modal();</scrip>
+    <script>$(#flash-overlay-modal').modal();</script>
 </body>
 </html>
