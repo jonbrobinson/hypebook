@@ -26,12 +26,24 @@ class FunctionalHelper extends \Codeception\Module
         $I->click('Sign In');
     }
 
+    public function postAstatus($overrides = [])
+    {
+        $this->have('Hypebook\Statuses\Status', $overrides);
+    }
+
+    public function have($model, $overrides = [])
+    {
+        return TestDummy::create($model, $overrides);
+
+    }
+
 
     /**
      * @param array $overrides
+     * @return mixed
      */
     public function haveAnAccount($overrides = [])
     {
-        TestDummy::create('Hypebook\Users\User', $overrides);
+        return $this->have('Hypebook\Users\User', $overrides);
     }
 }

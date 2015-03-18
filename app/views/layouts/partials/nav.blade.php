@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Hypebook</a>
+            <a class="navbar-brand" href="/">Hypebook</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -32,7 +32,8 @@
                         </ul>
                     </li>
                 @else
-                    <li><a href="/login">Log In</a></li>
+                    <li>{{ link_to_route('register_path', 'Register') }}</li>
+                    <li>{{ link_to_route('login_path', 'Log In') }}</li>
                 @endIf()
             </ul>
         </div>

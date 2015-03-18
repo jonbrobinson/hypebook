@@ -4,3 +4,10 @@ Hypebook\Users\User:
   password: $string
   created_at: $date
   updated_at: $date
+
+Hypebook\Statuses\Status:
+  user_id:
+    type: Hypebook\Users\User
+  body: $text
+  created_at: $date
+  updated_at: $date
