@@ -7,29 +7,20 @@
 
             @include('layouts.partials.errors')
 
-            {{ Form::open() }}
-            <div class="form-group">
-                {{ Form::label('body', 'Status:') }}
-                {{ Form::textarea('body', null, ['class' => 'form-control', "placeholder" => "Whats on your mind?"]) }}
-            </div>
+            <div class="status-post">
+                {{ Form::open() }}
+                <div class="form-group">
+                    {{ Form::textarea('body', null, ['class' => 'form-control', "rows" => 3, "placeholder" => "Whats on your mind?"]) }}
+                </div>
 
-            <div class="form-group">
-                {{ Form::submit('Post Status', ['class' => 'btn btn-primary']) }}
+                <div class="form-group status-post-submit">
+                    {{ Form::submit('Post Status', ['class' => 'btn btn-default btn-xs']) }}
+                </div>
+                {{ Form::close() }}
             </div>
-            {{ Form::close() }}
 
             @foreach($statuses as $status)
-                <article class="media status-media">
-                    <div class="pull-left">
-                        <img class="media-object" src="{{ $status->user->present()->gravatar }}" alt="{{ $status->user->username }}">
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">{{ $status->user->username }}</h4>
-                        <p>{{ $status->created_at->diffForHumans() }}</p>
-
-                        {{ $status->body }}
-                    </div>
-                </article>
+                @include ('statuses.partials.status')
             @endforeach
         </div>
     </div>

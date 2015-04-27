@@ -4,10 +4,11 @@ namespace Hypebook\Statuses;
 
 use Hypebook\Statuses\Events\StatusWasPublished;
 use Laracasts\Commander\Events\EventGenerator;
+use Laracasts\Presenter\PresentableTrait;
 
 class Status extends \Eloquent {
 
-    use EventGenerator;
+    use EventGenerator, PresentableTrait;
 
     /**
      * Fillable field for the body
@@ -15,6 +16,13 @@ class Status extends \Eloquent {
      * @var array
      */
     protected  $fillable = ['body'];
+
+    /**
+     * Path to presenter
+     *
+     * @var string
+     */
+    protected $presenter = 'Hypebook\Statuses\StatusPresenter';
 
     /**
      * A status belongs to a user
