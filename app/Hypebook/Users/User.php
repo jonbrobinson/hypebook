@@ -9,11 +9,12 @@ use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Laracasts\Commander\Events\EventGenerator;
 use Eloquent, Hash;
+use Laracasts\Presenter\PresentableTrait;
 
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
-	use UserTrait, RemindableTrait, EventGenerator;
+	use UserTrait, RemindableTrait, EventGenerator, PresentableTrait;
 
 	/**
 	 * Which fields may be mass assigned?
@@ -28,6 +29,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var string
 	 */
 	protected $table = 'users';
+
+    /**
+     * Path ro the presenter for a user
+     *
+     * @var string
+     */
+    protected $presenter = 'Hypebook\Users\UserPresenter';
+
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -72,14 +81,4 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 		return $user;
 	}
-
-    /**
-     * @return string
-     */
-    public function gravatarLink()
-    {
-        $email = md5($this->email);
-
-        return "//www.gravatar.com/avatar/{$email}?s=30";
-    }
 }

@@ -22,7 +22,7 @@
                     <li class="dropdown">
 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <img class="nav-gravatar" src="{{ gravatar_link($currentUser->email) }}" alt="{{ $currentUser->username }}">
+                            <img class="nav-gravatar" src="{{ $currentUser->present()->gravatar }}" alt="{{ $currentUser->username }}">
 
                             {{ $currentUser->username }}<span class="caret"></span>
                         </a>
