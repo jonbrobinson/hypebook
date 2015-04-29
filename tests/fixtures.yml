@@ -1,5 +1,5 @@
 Hypebook\Users\User:
-  username: $string
+  username: $string$integer
   email: $string@example.com
   password: $string
   created_at: $date
