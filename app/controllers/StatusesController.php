@@ -3,12 +3,9 @@
 use Hypebook\Forms\PublishStatusForm;
 use Hypebook\Statuses\PublishStatusCommand;
 use Hypebook\Statuses\StatusRepository;
-use Laracasts\Commander\CommanderTrait;
 use Laracasts\Flash\Flash;
 
 class StatusesController extends \BaseController {
-
-	use CommanderTrait;
 
 	protected $statusRepository;
     /**

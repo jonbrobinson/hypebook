@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\View;
+use Laracasts\Commander\CommanderTrait;
 
 class BaseController extends Controller {
 
+    use CommanderTrait;
 	/**
 	 * Setup the layout used by the controller.
 	 *

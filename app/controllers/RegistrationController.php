@@ -7,7 +7,6 @@ use Laracasts\Flash\Flash;
 
 class RegistrationController extends BaseController
 {
-    use  CommanderTrait;
 
     /**
      * @var RegistrationForm
