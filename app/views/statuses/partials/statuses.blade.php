@@ -1,7 +1,5 @@
-@if ($statuses->count())
-    @foreach($statuses as $status)
+@forelse($statuses as $status)
         @include ('statuses.partials.status')
-    @endforeach
-@else
+@empty
     <p>This user hasn't posted a status yet</p>
-@endif
+@endforelse
