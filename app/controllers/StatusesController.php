@@ -1,14 +1,14 @@
 <?php
 
-use Hypebook\Core\CommandBus;
 use Hypebook\Forms\PublishStatusForm;
 use Hypebook\Statuses\PublishStatusCommand;
 use Hypebook\Statuses\StatusRepository;
+use Laracasts\Commander\CommanderTrait;
 use Laracasts\Flash\Flash;
 
-class StatusController extends \BaseController {
+class StatusesController extends \BaseController {
 
-	use CommandBus;
+	use CommanderTrait;
 
 	protected $statusRepository;
     /**
@@ -57,11 +57,13 @@ class StatusController extends \BaseController {
 	 */
 	public function store()
 	{
-        $this->publishStatusForm->validate(Input::only('body'));
+        $input = Input::get();
 
-		$command = new PublishStatusCommand(Input::get('body'), Auth::user()->id);
+        $input['userId'] = Auth::id();
 
-		$this->execute($command);
+        $this->publishStatusForm->validate($input);
+
+		$this->execute(PublishStatusCommand::class, $input);
 
 		Flash::message('Your status has been updated!');
 
