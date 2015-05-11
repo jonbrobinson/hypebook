@@ -39,4 +39,26 @@ class UserRepository {
             $query->latest();
         }])->whereUsername($username)->first();
     }
+
+    /**
+     * Find a user by their id.
+     * @param $id
+     * @return mixed
+     */
+    public function findById($id)
+    {
+        return User::findOrFail($id);
+    }
+
+    /**
+     * Follow a Hypebook user.
+     *
+     * @param mixed $userIdToFollow
+     * @param User  $user
+     * @return mixed
+     */
+    public function follow($userIdToFollow, User $user)
+    {
+        return $user->follows()->attach($userIdToFollow);
+    }
 }
