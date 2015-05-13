@@ -61,4 +61,16 @@ class UserRepository {
     {
         return $user->follows()->attach($userIdToFollow);
     }
+
+    /**
+     * Unfollow a Hypebook User
+     *
+     * @param $userIdToUnfollow
+     * @param User $user
+     * @return mixed
+     */
+    public function unfollow($userIdToUnfollow, User $user)
+    {
+        return $user->follows()->detach($userIdToUnfollow);
+    }
 }
