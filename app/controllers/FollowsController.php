@@ -3,9 +3,12 @@
 use Hypebook\Users\FollowUserCommand;
 use Laracasts\Flash\Flash;
 
+/**
+ * Class FollowsController
+ */
 class FollowsController extends \BaseController {
 
-	/**
+    /**
 	 * Follow a User
      *
 	 * @return Response
@@ -22,15 +25,20 @@ class FollowsController extends \BaseController {
 	}
 
 
-	/**
-	 * UnFollow a User
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
+    /**
+     * UnFollow a User
+     * @param $idOfUserToUnfollow
+     * @internal param int $id
+     * @return Response
+     */
+    public function destroy($idOfUserToUnfollow)
+    {
+        $this->execute(UnFollowUserCOmmand::class);
+
+        Flash::success('You have now unfollowed this user.');
+
+        return Redirect::back();
+    }
 
 
 }
