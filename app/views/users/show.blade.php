@@ -11,6 +11,7 @@
 
                 <div class="media-body">
                     <h1>{{ $user->username }}</h1>
+                    <p class="text-muted">{{ $user->statuses->count() }} Status</p>
 
                     @unless($user->is($currentUser))
                         @include('users.partials.follow-form')
