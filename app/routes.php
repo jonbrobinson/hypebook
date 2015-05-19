@@ -11,6 +11,13 @@
 |
 */
 
+
+Event::listen('Hypebook.Registration.Events.UserRegistered', function()
+{
+    dd('Email the new user  a welcome message');
+});
+
+
 Route::get('/', [
     'as' => 'home',
     'uses' => 'PagesController@home'
