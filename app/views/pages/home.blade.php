@@ -4,6 +4,7 @@
     <div class="jumbotron">
         <h1>Welcome to hypebook</h1>
 
+        
         <p>Welcome to the hypest spot in ATX to find people the hypest people around the city</p>
 
         @if(!$currentUser)
